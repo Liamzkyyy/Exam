@@ -1,0 +1,273 @@
+import 'package:flutter/material.dart';
+
+
+
+void main() {
+
+  runApp(MyApp());
+
+}
+
+
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+
+  @override
+
+  Widget build(BuildContext context) {
+
+    return MaterialApp(
+
+      debugShowCheckedModeBanner: false,
+
+      home: WeatherScreen(),
+
+    );
+
+  }
+
+}
+
+
+
+class WeatherScreen extends StatelessWidget {
+  const WeatherScreen({super.key});
+
+
+  @override
+
+  Widget build(BuildContext context) {
+
+    return Scaffold(
+
+      backgroundColor: Colors.white,
+
+      appBar: AppBar(
+
+        title: Text('Weather'),
+
+        centerTitle: true,
+
+        backgroundColor: Colors.deepPurple,
+
+      ),
+
+      body: Padding(
+
+        padding: EdgeInsets.all(16.0),
+
+        child: Column(
+
+          crossAxisAlignment: CrossAxisAlignment.start,
+
+          children: [
+
+            // Current Location Weather
+
+            Container(
+
+              padding: EdgeInsets.all(16),
+
+              decoration: BoxDecoration(
+
+                color: Colors.deepPurple,
+
+                borderRadius: BorderRadius.circular(12),
+
+              ),
+
+              child: Column(
+
+                crossAxisAlignment: CrossAxisAlignment.start,
+
+                children: [
+
+                  Text(
+
+                    "Current location",
+
+                    style: TextStyle(color: Colors.white70, fontSize: 16),
+
+                  ),
+
+                  SizedBox(height: 4),
+
+                  Text(
+
+                    "Dhaka",
+
+                    style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold),
+
+                  ),
+
+                  SizedBox(height: 4),
+
+                  Row(
+
+                    children: [
+
+                      Icon(Icons.thunderstorm, color: Colors.white),
+
+                      SizedBox(width: 8),
+
+                      Text(
+
+                        "Thunder",
+
+                        style: TextStyle(color: Colors.white, fontSize: 16),
+
+                      ),
+
+                      Spacer(),
+
+                      Text(
+
+                        "20°C",
+
+                        style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+
+                      ),
+
+                    ],
+
+                  ),
+
+                ],
+
+              ),
+
+            ),
+
+            SizedBox(height: 20),
+
+
+
+            // "Around the world" title
+
+            Text(
+
+              "Around the world",
+
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+
+            ),
+
+            SizedBox(height: 10),
+
+
+
+            // World Weather List
+
+            Expanded(
+
+              child: ListView(
+
+                children: [
+
+                  weatherCard("United States", "California", "Clear", Icons.wb_sunny, "6°C"),
+
+                  weatherCard("China", "Beijing", "Mostly sunny", Icons.wb_sunny, "5°C"),
+
+                  weatherCard("Russia", "Moscow", "Cloudy", Icons.cloud, "-4°C"),
+
+                ],
+
+              ),
+
+            ),
+
+          ],
+
+        ),
+
+      ),
+
+    );
+
+  }
+
+
+
+  Widget weatherCard(String country, String city, String condition, IconData icon, String temp) {
+
+    return Container(
+
+      margin: EdgeInsets.only(bottom: 12),
+
+      padding: EdgeInsets.all(16),
+
+      decoration: BoxDecoration(
+
+        color: Colors.deepPurple,
+
+        borderRadius: BorderRadius.circular(12),
+
+      ),
+
+      child: Column(
+
+        crossAxisAlignment: CrossAxisAlignment.start,
+
+        children: [
+
+          Text(
+
+            country,
+
+            style: TextStyle(color: Colors.white70, fontSize: 16),
+
+          ),
+
+          SizedBox(height: 4),
+
+          Text(
+
+            city,
+
+            style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold),
+
+          ),
+
+          SizedBox(height: 4),
+
+          Row(
+
+            children: [
+
+              Icon(icon, color: Colors.white),
+
+              SizedBox(width: 8),
+
+              Text(
+
+                condition,
+
+                style: TextStyle(color: Colors.white, fontSize: 16),
+
+              ),
+
+              Spacer(),
+
+              Text(
+
+                temp,
+
+                style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+
+              ),
+
+            ],
+
+          ),
+
+        ],
+
+      ),
+
+    );
+
+  }
+
+}
